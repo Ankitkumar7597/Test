@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+
+  <meta name="robots" content="nofollow, noindex" />
+
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1, shrink-to-fit=no" />
+
+  <title>
+    <%=data.title%>
+  </title>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link rel="icon" href="/frontassets/images/contol-favicon.ico" />
+  <link rel="icon" href="#" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="/frontassets/css/tailwind css.0"></script>
+  <link rel="stylesheet" href="/frontassets/css/custom.css" />
+  <link rel="stylesheet" href="/frontassets/css/errorcss.css" />
+  <!-- jQuery Library -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script src="https://www.google.com/recaptcha/api.js?onload=onLoadCallback&render=explicit" async defer></script>
+
+
+</head>
+
+<body class="overflow-x-hidden">
+
+
+  <% if (data.type !=1) { %>
+    <%- include('../../partition/front/header') %>
+      <% } %>
+        <div class="page-wrapper">
+          <div class="main-content">
+            <%- include('../front/'+data.fileName) %>
+          </div>
+        </div>
+
+        <% if (data.type !=1) { %>
+          <%- include('../../partition/front/footer') %>
+            <% } %>
+
+              <!-- ---popup box  -->
+
+              <div id="popup-box"
+                class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center hidden z-[100]">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden w-10/12 md:w-7/12 lg:w-7/12">
+                  <div class="flex justify-end py-1 pr-5">
+                    <button id="close-popup"
+                      class="text-gray-500 hover:text-gray-700 text-[30px] md:text-[40px] leading-[20px]">
+                      &times;
+                    </button>
+                  </div>
+
+                  <div class="p-4">
+                    <video autoplay loop muted controls class="w-full">
+                      <source src="/frontassets/media/try-video.mp4" type="video/mp4" />
+                    </video>
+                  </div>
+                </div>
+              </div>
+              <div id="distributer-form"
+                class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-[100] ">
+                <div
+                  class="w-full md:w-10/12 lg:w-8/12 mx-auto bg-white md:rounded-3xl p-5  overflow-y-scroll h-full md:overflow-auto md:h-auto">
+                  <div class="fixed top-0 right-0 left-0 py-5 w-full md:relative bg-white md:py-0 z-50">
+                    <div class="relative">
+                      <button id="close-btn"
+                        class="absolute -top-[30px] -md:top-[25px] right-4 md:right-2 text-gray-500 hover:text-gray-700 text-[40px] z-50">
+                        &times;
+                      </button>
+                    </div>
+                  </div>
+                  <div class="flex justify-between flex-wrap -mx-4 gap-y-4 mb-4 items-center hidden md:flex">
+                    <div class="w-full px-4">
+                      <div>
+                        <div class="flex items-center gap-x-3 mt-3 ">
+                          <span><svg width="50" height="1" viewBox="0 0 50 1" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <mask id="path-1-inside-1_224_423" fill="white">
+                                <path d="M0 0H50V1H0V0Z" />
+                              </mask>
+
+                              <path d="M50 0H0V2H50V0Z" fill="#FFB600" mask="url(#path-1-inside-1_224_423)" />
+                            </svg>
+                          </span>
+
+                          <p class="text-sm font-semibold primary-text tracking-[4px] uppercase">
+                            BECOME A DISTRIBUTOR
+                          </p>
+                        </div>
+                        <h2 class="h2-heading text-black mb-3 mt-2">
+                          Join Forces with Leading
+                          <span class="primary-text">Lubricant Manufacturer</span>
+                        </h2>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex justify-between flex-wrap -mx-4 gap-y-4 mt-4 md:mt-0 items-center ">
+                    <div class="w-full md:w-5/12 lg:w-5/12 px-4">
+                      <div class="h-full">
+                        <img src="/frontassets/images/over-service-2.webp" alt="contact-img"
+                          class="w-full object-cover rounded-2xl hidden md:block  min-h-[555px]" />
+                      </div>
+                    </div>
+                    <div class="w-full md:w-7/12 lg:w-7/12 px-4">
+                      <div class="distributer-form">
+                        <form class="contact-form" id="distributer-form-content">
+                          <div class="flex justify-between items-center flex-wrap md:flex-nowrap gap-x-3">
+                            <div class="inputP  input-required">
+                              <input type="text" placeholder="Company Name" id="companyName" name="companyName"
+                                class="remove_space w-full block py-1.5 px-3  border border-solid border-gray-300 text-black focus:text-gray-700 focus:bg-white focus:outline-none rounded leading-12 h-12" />
+                            </div>
+                            <div class="inputP input-required  mt-8 md:mt-auto">
+                              <input type="text" placeholder="City" id="cityName" name="cityName"
+                                class="remove_space  w-full block py-1.5 px-3  border border-solid border-gray-300 text-black focus:text-gray-700 focus:bg-white focus:outline-none rounded leading-12 h-12" />
+                            </div>
+                          </div>
+                          <div class="flex justify-between items-center flex-wrap md:flex-nowrap gap-x-3">
+                            <div class="inputP input-required mt-8">
+                              <input type="text" placeholder="Type of Business" id="businessType" name="businessType"
+                                class="remove_space w-full block py-1.5 px-3 border border-solid border-gray-300 text-black focus:text-gray-700 focus:bg-white focus:outline-none rounded leading-12 h-12" />
+                            </div>
+                            <div class="inputP  input-required mt-8">
+                              <input type="text" placeholder="Your Mobile" id="mobileNumber" name="mobileNumber"
+                                class="mobile-valid remove_space w-full block py-1.5 px-3 border border-solid border-gray-300 text-black focus:text-gray-700 focus:bg-white focus:outline-none rounded leading-12 h-12" />
+                            </div>
+
+
+                          </div>
+                          <div class="inputP input-required mt-8">
+                            <input type="email" placeholder="Email address" id="email" name="email"
+                              class="remove_space w-full block py-1.5 px-3 border  border-gray-300 border-solid text-black focus:text-gray-700 focus:bg-white focus:outline-none rounded leading-12 h-12" />
+                          </div>
+
+                          <div class="inputP my-8">
+                            <textarea name="message" id="message" placeholder="Message"
+                              class="remove_space w-full block py-1.5 px-3 border border-solid border-gray-300  resize-none text-black focus:text-gray-700 focus:bg-white focus:outline-none rounded leading-12"
+                              rows="3"></textarea>
+                          </div>
+
+                          <div class="g-recaptcha-outer-div">
+                            <div class="g-recaptcha"></div>
+                          </div>
+                          <div>
+                            <button value="submit" class="text-white block py-3 w-full primary-bg mt-8 btn-1"
+                              id="submitDistributer">
+                              <i class="fa fa-spin fa-spinner mr-2 btn_spinner" id="btn_spinner"></i>Send Message
+                            </button>
+                          </div>
+
+                          <div class="mt-2">
+                            <p id="errorMessageDistribute"></p>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="testimonial-popup"
+                class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 hidden z-40">
+                <div class="bg-white p-6 rounded-lg shadow-lg w-11/12 sm:w-6/12 relative">
+                  <button id="close-testimonial" class="absolute top-0 right-0 m-3 text-gray-500 hover:text-gray-800">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                      stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                  <!-- Testimonial Content -->
+                  <div class="testimonial-popup-content p-4 text-lg text-gray-800" id="popupContent"></div>
+                </div>
+              </div>
+
+
+              <div
+                class="p-2 text-white rounded-lg text-center w-4/5 md:w-3/12 mx-auto fixed bottom-8 popup-box-alert z-50"
+                id="popup-box-alert">
+              </div>
+
+              <div class="scroll-top" id="scrollToTopBtn">
+                <svg width="41" height="40" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="2.37793" y="2.31348" width="37" height="35.8035" rx="3.5" fill="#ffb600" stroke="#ffb600"
+                    stroke-width="3" />
+                  <path
+                    d="M19.6279 30.7832C19.6279 31.4736 20.1876 32.0332 20.8779 32.0332C21.5683 32.0332 22.1279 31.4736 22.1279 30.7832H19.6279ZM21.7618 8.76296C21.2737 8.2748 20.4822 8.2748 19.994 8.76296L12.0391 16.7179C11.5509 17.2061 11.5509 17.9975 12.0391 18.4857C12.5273 18.9738 13.3187 18.9738 13.8069 18.4857L20.8779 11.4146L27.949 18.4857C28.4372 18.9738 29.2286 18.9738 29.7168 18.4857C30.2049 17.9975 30.2049 17.2061 29.7168 16.7179L21.7618 8.76296ZM22.1279 30.7832L22.1279 9.64684H19.6279L19.6279 30.7832H22.1279Z"
+                    fill="white" />
+                </svg>
+              </div>
+
+
+              <!-- jQuery Validation Plugin -->
+              <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+
+
+              <!-- Datepicker JS -->
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.js"></script>
+
+              <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+              <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+              <script src="/frontassets/js/validation.js"></script>
+              <script src="/frontassets/js/custom.js"></script>
+              <script src="/frontassets/js/customjs.js"></script>
+
+
+              <script>
+                var swiper = new Swiper(".firstSwiper", {
+                  loop: true,
+                  spaceBetween: 20,
+                  navigation: {
+                    nextEl: ".hero-btn-next",
+
+                    prevEl: ".hero-btn-prev",
+                  },
+                  autoplay: {
+                    delay: 4000,
+
+                  },
+
+                  slidesPerView: "1",
+
+                  spaceBetween: 0,
+                });
+              </script>
+              <!-- Initialize Swiper -->
+              <script>
+                var swiper = new Swiper(".secondSwiper", {
+                  loop: true,
+                  pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                  },
+
+                  autoplay: {
+                    delay: 4000,
+                  },
+
+                  breakpoints: {
+                    320: {
+                      slidesPerView: 1,
+
+                      spaceBetween: 20,
+                    },
+
+                    640: {
+                      slidesPerView: 2,
+
+                      spaceBetween: 20,
+                    },
+
+                    768: {
+                      slidesPerView: 2.5,
+
+                      spaceBetween: 20,
+                    },
+
+                    1024: {
+                      slidesPerView: 3.5,
+
+                      spaceBetween: 20,
+                    },
+
+                    1280: {
+                      slidesPerView: 3.5,
+
+                      spaceBetween: 20,
+                    },
+
+                    1536: {
+                      slidesPerView: 4.5,
+
+                      spaceBetween: 20,
+                    },
+                  },
+
+                  slidesPerView: "1",
+
+                  spaceBetween: 0,
+                });
+              </script>
+              <!-- Initialize Swiper -->
+              <script>
+                var swiper = new Swiper(".thiredSwiper", {
+                  loop: true,
+                  // navigation: {
+                  //   nextEl: ".thred-swei-next",
+
+                  //   prevEl: ".thred-swei-prev",
+                  // },
+                  pagination: {
+                    el: ".thiredpagination",
+                    clickable: true,
+                  },
+
+                  autoplay: {
+                    delay: 4000,
+                  },
+
+                  breakpoints: {
+                    320: {
+                      slidesPerView: 1,
+
+                      spaceBetween: 30,
+                    },
+
+                    640: {
+                      slidesPerView: 2,
+
+                      spaceBetween: 30,
+                    },
+
+                    768: {
+                      slidesPerView: 3,
+
+                      spaceBetween: 30,
+                    },
+
+                    1024: {
+                      slidesPerView: 4,
+
+                      spaceBetween: 30,
+                    },
+                  },
+                });
+              </script>
+              <script>
+                AOS.init();
+              </script>
+              <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                  const readMoreLinks = document.querySelectorAll(".testimonial-link");
+                  const testimonialContents = document.querySelectorAll(
+                    ".testimonial-content"
+                  );
+
+                  readMoreLinks.forEach((link, index) => {
+                    link.addEventListener("click", function (event) {
+                      event.preventDefault();
+
+                      const content = testimonialContents[index];
+                      content.classList.toggle("line-clamp-5"); // Toggle line clamp
+                      link.textContent = content.classList.contains("line-clamp-5")
+                        ? "Read More"
+                        : "Read Less";
+                    });
+                  });
+                });
+
+
+              </script>
+              <!-- --------------smooth scroll---------- -->
+              <script>
+                document.querySelectorAll('.scroll').forEach(anchor => {
+                  anchor.addEventListener('click', function (e) {
+                    e.preventDefault(); // Prevent default anchor click behavior
+
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+
+                    // Calculate the position to scroll to so that the bottom of the target element is aligned with the bottom of the viewport
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+                    const offset = window.innerHeight - targetElement.getBoundingClientRect().height;
+                    const finalPosition = targetPosition - offset;
+
+                    smoothScrollTo(finalPosition, 11000); // 11000 milliseconds (11 second) duration
+                  });
+                });
+
+                function smoothScrollTo(targetPosition, duration) {
+                  const startPosition = window.pageYOffset;
+                  const distance = targetPosition - startPosition;
+                  let startTime = null;
+
+                  function animation(currentTime) {
+                    if (startTime === null) startTime = currentTime;
+                    const timeElapsed = currentTime - startTime;
+                    const run = ease(timeElapsed, startPosition, distance, duration);
+                    window.scrollTo(0, run);
+                    if (timeElapsed < duration) requestAnimationFrame(animation);
+                  }
+
+                  function ease(t, b, c, d) {
+                    t /= d / 2;
+                    if (t < 1) return c / 2 * t * t + b;
+                    t--;
+                    return -c / 2 * (t * (t - 2) - 1) + b;
+                  }
+
+                  requestAnimationFrame(animation);
+                }
+
+              </script>
+</body>
+
+</html>

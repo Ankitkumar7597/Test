@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="/adminassets/images/favicon.ico"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/adminassets/css/colorVar.css"
+    />
+    <link rel="stylesheet" type="text/css" href="/adminassets/css/fonts.css" />
+    <link rel="stylesheet" type="text/css" href="/adminassets/css/auth.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/adminassets/css/select2.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/adminassets/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/adminassets/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/adminassets/css/inputError.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/adminassets/css/datatables.min.css"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="/adminassets/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/adminassets/css/custom.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/adminassets/css/jquery.validation.css"
+    />
+    <!-- <link rel="stylesheet" type="text/css" href="/adminassets/css/toggle.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="/adminassets/css/custom-inputags.css"> -->
+  </head>
+
+  <body>
+    <div class="loader" style="width: 100%">
+      <div class="spinner">
+        <img src="/adminassets/images/loader.gif" alt="" />
+      </div>
+    </div>
+    <input type="hidden" id="base_url" value="<%= process.env.BASE_URL %>" />
+    <input
+      type="hidden"
+      id="tableId"
+      value="<%= (typeof defaultTable === 'string' && defaultTable) ? defaultTable : '' %>"
+    />
+    <input type="hidden" id="front" value="<%= front %>" />
+    <input type="hidden" id="admin" value="<%= admin %>" />
+    <input
+      type="hidden"
+      id="flag_name"
+      value="<% if(typeof flag_name == 'string') { %><%= flag_name %><% } %>"
+    />
+    <input
+      type="hidden"
+      id="flag_name2"
+      value="<% if(typeof flag_name2 == 'string') { %><%= flag_name2 %><% } %>"
+    />
+    <input
+      type="hidden"
+      id="flag_name3"
+      value="<% if(typeof flag_name3 == 'string') { %><%= flag_name3 %><% } %>"
+    />
+    <input
+      type="hidden"
+      id="top_user"
+      value="<% if(typeof top_user == 'string') { %><%= top_user %><% } %>"
+    />
+
+    <div id="snackbar"></div>
+    <div id="snackbar-error"></div>
+    <div id="snackbar-success"></div>
+
+    <% if (data.type !=1) { %> <%- include('../../partition/admin/header') %> <%
+    } %>
+
+    <div class="page-wrapper">
+      <div class="main-content"><%- include('../admin/'+data.fileName) %></div>
+    </div>
+
+    <% if (data.type !=1) { %>
+    <!-- <%- include('../../partition/admin/footer') %> -->
+    <% } %>
+
+    <!-- Logout Modal start -->
+    <div
+      class="modal fade"
+      id="logoutModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLongTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-frame modal-top modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Logout</h5>
+            <button
+              type="button"
+              class="close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-8 text-left">
+                <p>
+                  Are you sure you want to logout? If you logout then your
+                  session is terminated.
+                </p>
+              </div>
+              <div class="col-md-4 text-right">
+                <button
+                  class="btn btn-danger waves-effect waves-light"
+                  data-bs-dismiss="modal"
+                >
+                  Cancel
+                </button>
+                <a
+                  href="<%= admin %>/logout"
+                  class="btn btn-info waves-effect waves-light"
+                  >Logout</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Logout Modal end -->
+    <script type="text/javascript" src="/adminassets/js/jquery.min.js"></script>
+    <script
+      type="text/javascript"
+      src="/adminassets/js/bootstrap.bundle.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="/adminassets/js/jquery.validate.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="/adminassets/js/additional-methods.min.js"
+    ></script>
+    <script type="text/javascript" src="/adminassets/js/validation.js"></script>
+    <script
+      type="text/javascript"
+      src="/adminassets/js/select2/select2.full.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="/adminassets/js/select2/select2-custom.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="/adminassets/js/jquery.appear.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="/adminassets/js/jquery.countTo.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="/adminassets/js/datatables.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="/adminassets/js/custom-table.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="/adminassets/js/createDataTable.js"
+    ></script>
+    <script type="text/javascript" src="/adminassets/js/custom.js"></script>
+    <script type="text/javascript" src="/adminassets/js/customjs.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+    <script type="text/javascript">
+      var dataTable = "";
+      var dataTable2 = "";
+      var dataTable3 = "";
+      var flag_name = $("#flag_name").val();
+      var flag_name2 = $("#flag_name2").val();
+      var flag_name3 = $("#flag_name3").val();
+      createDatatable(flag_name);
+    </script>
+    <script type="text/javascript">
+      changeLogoImage();
+    </script>
+
+    <script>
+      // Prevent Bootstrap dialog from blocking focusin
+      document.addEventListener("focusin", (e) => {
+        if (
+          e.target.closest(
+            ".tox-tinymce, .tox-tinymce-aux, .moxman-window, .tam-assetmanager-root"
+          ) !== null
+        ) {
+          e.stopImmediatePropagation();
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,81 @@
+:root.dark-theme {
+    --black: #ffffff;
+    /* Switch to white for dark backgrounds */
+    --white: #000;
+    /* Darker background */
+    --off-white: #1e1e1e;
+    /* Very dark grey for subtle contrast */
+    --border-color: #3e3e3e;
+    /* Dark border color */
+    --muted: #bfbfbf;
+    /* Muted text color for better readability on dark background */
+    --danger: #ff4c6d;
+    /* Slightly brighter red for alerts */
+    --danger-light: #ff758b;
+    /* Brighter light danger */
+    --success-light: #28a745;
+    /* Slightly brighter green */
+    --info: #1e90ff;
+    /* Bright info blue */
+    --info-light: #63b3ff;
+    /* Lightened info blue */
+    --warning: #ffcc00;
+    /* Brighter warning yellow */
+    --warning-light: #ffe066;
+    /* Lightened warning yellow */
+    --rating: #ffc107;
+    /* Brightened yellow for ratings */
+    --txt: #e5e5e5;
+    /* Lighter text for readability */
+    --primaryColor: #2091ff;
+    /* Darker primary blue */
+    --primarylightshade: #004a73;
+    /* Darker shade for accents */
+    --secondColor: #508ac2;
+    /* Darker secondary color */
+    --darkColor: #23293f;
+    --darkColor3: #bbe5fbe3;
+    /* Deep black for background */
+    --darkColor2: #0d0d0d;
+    /* Slightly lighter black */
+    --primaryColorGradint: linear-gradient(194deg, #10232e, #2091ff);
+    --scroller-bg: #2a2a2a;
+    /* Darker scrollbar background */
+    --bg-white1: #141728;
+    --bg-white2: #23293f;
+    --fixedShadew: #000000a8;
+    --inputFocus: #fdfdfd6f;
+    --alwaysWhiteText: #fff;
+    --alwaysBlackText: #000;
+}
+
+:root {
+    --black: #000000;
+    --white: #fff;
+    --off-white: #f6f6f6;
+    --border-color: #efefef;
+    --muted: #181818;
+    --danger: #e81a46;
+    --danger-light: #ed4b71;
+    --success-light: #008000;
+    --info: #07a8ff;
+    --info-light: #5fc5ff;
+    --warning: #ffa000;
+    --warning-light: #ffb448;
+    --rating: #ffca2b;
+    --txt: #242f48;
+    --primaryColor: #2091ff;
+    --primarylightshade: #e5f2f8;
+    --secondColor: #72bef0;
+    --darkColor: #120a21;
+    --darkColor3: #120a21;
+    --darkColor2: #1e1532;
+    --primaryColorGradint: linear-gradient(194deg, #9e8989, #369cde);
+    --scroller-bg: #cfecff;
+    --bg-white1: #E3F5FA;
+    --bg-white2: #fff;
+    --fixedShadew: #000000a8;
+    --inputFocus: #25282597;
+    --alwaysWhiteText: #fff;
+    --alwaysBlackText: #000;
+}

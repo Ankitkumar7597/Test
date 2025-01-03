@@ -1,0 +1,86 @@
+<div class="ad-auth-wrapper" data-aos="flip-up">
+    <div class="ad-auth-box">
+        <div class="row main-img align-items-center">
+
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-6 py-4 col-12 d-none d-sm-block">
+
+                <div class="auth-main-125 mb-5">
+                    <h3>
+                        WELCOME BACK
+                    </h3>
+
+                    <p>
+                        Please Enter Your login Details to Continue </p>
+
+                </div>
+
+                <div class="ad-auth-img">
+                    <img src="/adminassets/images/auth-img1.png" alt="" class="mx-auto d-flex" />
+                </div>
+            </div>
+
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-6 py-4 main-sec-img col-12  d-sm-block ">
+                <div class="ad-auth-content align-items-center">
+                    <form id="loginform" method="post" class="validation-form-container">
+                        <div class="text-left">
+                            <a class="ad-auth-logo" style="padding-top: 10px;">
+                                <!-- Logo code -->
+                            </a>
+                            <h2><span class="mb-5">lOGIN</span></h2>
+                            <p class="mb-1">Please Enter Your Details Below to Continue</p>
+                        </div>
+                        <input type="hidden" name="cm9sZV90eXBl" value="YWRtaW4=">
+                        <div class="ad-auth-form">
+                            <div class="ad-auth-feilds mb-1 rond-input">
+                                <label class="col-form-label label-col-1 mt-3">Username <span
+                                        style="color: red;">*</span></label>
+                                <input type="text" autofocus name="username" id="username"
+                                    placeholder="Please Enter Username" class="ad-input in_field round-border-1"
+                                    autocomplete="off" />
+                                <!--  <div class="ui corner label lable-152" id="demo1">
+                                    <i class="asterisk icon">*</i>
+                                </div> -->
+                            </div>
+                            <div class="ad-auth-feilds ui left labeled input rond-input">
+                                <label class="col-form-label label-col-1 mt-3">Password <span
+                                        style="color: red;">*</span></label>
+                                <input type="password" name="password" id="password" placeholder="Please Enter Password"
+                                    class="ad-input in_field round-border-1" />
+                                <!--  <div class="ui corner label lable-152 ">
+                                    <i class="asterisk icon">*</i>
+                                </div> -->
+                                <span toggle="#password"
+                                    class="fa fa-eye-slash field-icon toggle-login-password pass_eye pass_eye-152hr"
+                                    onclick="togglePassword(1);"></span>
+                            </div>
+                        </div>
+
+                        <div class="ad-other-feilds m-t-20 mb-2">
+                            <div class="ad-checkbox"></div>
+                            <a class="forgot-pws-btn" href="<%= admin %>/forgot-pws">Forgot Password?</a>
+                        </div>
+
+                        <!--  <div class="mb-5">
+                            <div id="recaptcha1"></div>
+                            <input type="hidden" class="hiddenRecaptcha" name="hiddenRecaptcha" id="hiddenRecaptcha">
+                            <div id="captcha_error" class="captcha_error"> </div>
+                        </div> -->
+
+                        <div class="ad-auth-btn">
+                            <button type="submit"
+                                class="effect-btn btn btn-block w-100 button-colro-1 squer-btn login_btn_cls"
+                                id="submitBtn"><i class="fa fa-spin fa-spinner mr-2" id="btn_spinner"></i>Login</button>
+                        </div>
+                        
+                        <p id="loginmsg"></p>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="ad-notifications ad-error">
+        <p><span>Duhh!</span>Something Went Wrong</p>
+    </div>
+</div>

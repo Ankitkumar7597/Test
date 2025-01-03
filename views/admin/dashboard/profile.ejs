@@ -1,0 +1,474 @@
+<section>
+    <div>
+        <div class="row mb-3" style="align-items: stretch;">
+            <div class="col-12 col-md-6 col-lg-3 mar-152r PRDr-152r " style="display: grid;">
+                <div class="profile-box-menu">
+                    <div class="profile-image-user">
+                        <div class="tab-iner">
+                            <div class="tab py-3 px-3">
+                                <button class="tablinks tabicon1 active" onclick="openCity(event, 'profile')">
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                    Update Profile
+                                </button>
+
+                                <button class="tablinks tabicon1" onclick="openCity(event, 'general')">
+                                    <i class="fa fa-cog mr-3" aria-hidden="true"></i>
+                                    General Setting
+                                </button>
+                                <button class="tablinks tabicon1" onclick="openCity(event, 'change_password')">
+                                    <i class="fa fa-key mr-3" aria-hidden="true"></i>
+                                    Change Password
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-9 d-flex">
+                <div class="profile-box-menu w-100">
+                    <div id="profile" class="tabcontent" style="display: block;">
+                        <div class="profileHeader">
+                            <h5 class="text-white">Update Profile</h5>
+                        </div>
+
+                        <div class="py-2 px-4">
+                            <form method="post" id="profileForm" class="separate-form validation-form-container pb-2">
+                                <input type="hidden" id="oldImage" class="oldImage" name="oldImage"
+                                    value="<%= typeof ProfileData === 'object' && ProfileData ? (ProfileData.logo ? ProfileData.logo : '') : ''  %>" />
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="row">
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <div class="formbold-main-wrapper">
+                                                    <!-- Author: FormBold Team -->
+                                                    <!-- Learn More: https://formbold.com -->
+                                                    <div class="formbold-form-wrapper">
+                                                        <div class="mb-3">
+                                                            <label class="col-form-label label-col-1"> Logo Update
+                                                            </label>
+                                                            <div class="formbold-mb-5 formbold-file-input formbold-file-input1"
+                                                                <% if (typeof ProfileData==='object' && ProfileData &&
+                                                                ProfileData.logo) { %> style="display: none;" <% } else
+                                                                    { %> style="display: block;" <% } %>>
+                                                                        <span class="empimage"></span>
+                                                                        <div class="progress progress_pro">
+                                                                            <div
+                                                                                class="progress-bar progress-bar-striped progress-bar-animated">
+                                                                                Hello</div>
+                                                                        </div>
+                                                                        <input type="file" name="file" id="file"
+                                                                            onchange="previewImage()" />
+                                                                        <label for="file">
+                                                                            <div>
+                                                                                <span>
+                                                                                    <img src="/adminassets/images/upload.png"
+                                                                                        style="width: 22px; margin-bottom: 15px;" />
+                                                                                </span>
+                                                                                <span class="formbold-drop-file"> Drag &
+                                                                                    Drop or
+                                                                                    browse to choose a file </span>
+                                                                            </div>
+                                                                        </label>
+                                                            </div>
+                                                            <input type="hidden" id="imageName" class="imageName"
+                                                                name="imageName"
+                                                                value="<%= typeof ProfileData === 'object' && ProfileData ? (ProfileData.logo ? ProfileData.logo : '') : ''  %>" />
+                                                            <!-- Image preview container -->
+                                                            <!-- Image preview container with remove icon -->
+                                                            <div id="image-preview"
+                                                                style="background-color: #ededed; position: relative;"
+                                                                <% if (typeof ProfileData==='object' && ProfileData &&
+                                                                ProfileData.logo) { %> style="display: block;" <% } else
+                                                                    { %> style="display: none;" <% } %>>
+                                                                        <!-- Remove icon -->
+                                                                        <span id="remove-icon" class="removeCommonIcon"
+                                                                            <% if (typeof ProfileData==='object' &&
+                                                                            ProfileData && ProfileData.logo) { %>
+                                                                            style="display: block;" <% } else { %>
+                                                                                style="display: none;" <% } %>
+                                                                                    onclick="removeCommonImage('uploads/profile/')">
+                                                                                    &#10006;
+                                                                                    <!-- This is the 'X' symbol, you can customize it -->
+                                                                        </span>
+                                                                        <!-- Image preview -->
+                                                                        <img id="preview-image" <% if (typeof
+                                                                            ProfileData==='object' && ProfileData &&
+                                                                            ProfileData.logo) { %> style="display:
+                                                                        block; width: 100%; height: 139px; object-fit:
+                                                                        contain;" <% } else { %> '' <% } %> src="<%=
+                                                                                    typeof ProfileData==='object' &&
+                                                                                    ProfileData ? (ProfileData.logo
+                                                                                    ? '/uploads/profile/' +
+                                                                                    ProfileData.logo : '' ) : '' %>">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <div class="ad-auth-feilds mb-3 rond-input">
+                                                    <label class="col-form-label label-col-1" class="mb-2">
+                                                        User Name
+                                                        <span style="color: red;">*</span>
+                                                    </label>
+                                                    <input type="text" name="username" id="username" value="<%= typeof ProfileData === 'object' && ProfileData ? 
+                                                        (ProfileData.username ? ProfileData.username : '') : 
+                                                        ''  %>" placeholder="Please Enter UserName"
+                                                        class="ad-input remove_space in_field round-border-1"
+                                                        autocomplete="off" readonly />
+                                                    <!--  <div class="ui corner label lable-152 lable-152r" id="demo1">
+                                                        <i class="asterisk icon">*</i>
+                                                    </div> -->
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="ad-auth-feilds mb-3 rond-input">
+                                                    <label class="col-form-label label-col-1" class="mb-2">
+                                                        Email Address
+                                                        <span style="color: red;">*</span>
+                                                    </label>
+                                                    <input type="text" name="admin_email" id="admin_email" value="<%= typeof ProfileData === 'object' && ProfileData ? 
+                                                    (ProfileData.admin_email ? ProfileData.admin_email : '') : 
+                                                    ''  %>" placeholder="Please Enter Email Address "
+                                                        class="ad-input remove_space in_field round-border-1"
+                                                        autocomplete="off" />
+                                                    <!--  <div class="ui corner label lable-152 lable-152r" id="demo1">
+                                                        <i class="asterisk icon">*</i>
+                                                    </div> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12">
+                                    <div class="form-group">
+                                        <div class="ad-auth-feilds mb-3 rond-input">
+                                            <label class="col-form-label label-col-1" class="mb-2">
+                                                Address
+                                            </label>
+                                            <textarea name="adminAddress1" id="adminAddress1" autocomplete="off"
+                                                rows="3" placeholder="Please Enter Address"
+                                                class="ad-input remove_space in_field round-border-1"><%= typeof ProfileData === 'object' && ProfileData ? 
+                                            (ProfileData.address ? ProfileData.address : '') : 
+                                            ''  %></textarea>
+                                        </div>
+                                    </div>
+                                </div> -->
+                                <div class="form-group ml-2  justify-content-end">
+                                    <div class="row">
+                                        <div class="col-12 col-sm-9 col-md-8 col-lg-10 col-xl-10 pt-2">
+                                            <p id="errormsg1"></p>
+                                        </div>
+                                        <div class="col-12 col-sm-3 col-md-4 col-lg-2 col-xl-2 text-end">
+                                            <button type="submit" class="effect-btn btn squer-btn mt-2 text-white"
+                                                style="background: rgb(1 82 74);" id="submitBtn1"><i
+                                                    class="fa fa-spin fa-spinner mr-2"
+                                                    id="btn_spinner"></i>Update</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div id="general" class="tabcontent" style="display: none;">
+                        <div class="profileHeader">
+                            <h5 class="text-white">General Setting</h5>
+                        </div>
+                        <div class="py-2 px-4">
+                            <h6 style="color:var(--black); font-weight: 600; font-size: 16px; margin-bottom: 10px;">
+                                Contact Details
+                            </h6>
+                            <form method="post" id="generalSettingFrm"
+                                class="separate-form validation-form-container pb-2">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="row">
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <div class="ad-auth-feilds mb-3 rond-input">
+                                                    <label class="col-form-label label-col-1" class="mb-2">Mobile Number
+                                                        1 <span style="color: red;">*</span></label>
+                                                    <input type="text" name="mobileNumber" id="mobileNumber" value="<%= typeof GeneralSettingData === 'object' && GeneralSettingData ? 
+                                                    (GeneralSettingData.mobileNumber ? GeneralSettingData.mobileNumber : '') : 
+                                                    ''  %>" placeholder="Please Enter Mobile Number 1"
+                                                        class="ad-input remove_space in_field round-border-1 mobile-valid"
+                                                        autocomplete="off" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <div class="ad-auth-feilds mb-3 rond-input">
+                                                    <label class="col-form-label label-col-1" class="mb-2">Mobile Number
+                                                        2
+                                                    </label>
+                                                    <input type="text" name="optionalMobileNumber"
+                                                        id="optionalMobileNumber"
+                                                        placeholder="Please Enter Mobile Number 2" value="<%= typeof GeneralSettingData === 'object' && GeneralSettingData ? 
+                                                        (GeneralSettingData.optionalMobileNumber ? GeneralSettingData.optionalMobileNumber : '') : 
+                                                        ''  %>"
+                                                        class="ad-input remove_space in_field round-border-1 mobile-valid"
+                                                        autocomplete="off" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <div class="ad-auth-feilds mb-3 rond-input">
+                                                    <label class="col-form-label label-col-1" class="mb-2">
+                                                        Business Email Address
+                                                        <span style="color: red;">*</span>
+                                                    </label>
+                                                    <input type="text" name="businessEmail" id="businessEmail" value="<%= typeof GeneralSettingData === 'object' && GeneralSettingData ? 
+                                                    (GeneralSettingData.businessEmail ? GeneralSettingData.businessEmail : '') : 
+                                                    ''  %>" placeholder="Please Enter Email Address "
+                                                        class="ad-input remove_space in_field round-border-1 "
+                                                        autocomplete="off" />
+                                                    <!--   <div class="ui corner label lable-152 lable-152r" id="demo1">
+                                                        <i class="asterisk icon">*</i>
+                                                    </div> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+
+                                            <div class="form-group">
+                                                <div class="ad-auth-feilds mb-3 rond-input">
+                                                    <label class="col-form-label label-col-1" class="mb-2">
+                                                        Business Email Address 2
+
+                                                    </label>
+                                                    <input type="text" name="businessEmail2" id="businessEmail2" value="<%= typeof GeneralSettingData === 'object' && GeneralSettingData ? 
+                                                    (GeneralSettingData.businessEmail2 ? GeneralSettingData.businessEmail2 : '') : 
+                                                    ''  %>" placeholder="Please Enter Email Address "
+                                                        class="ad-input remove_space in_field round-border-1 "
+                                                        autocomplete="off" />
+                                                    <!--  <div class="ui corner label lable-152 lable-152r" id="demo1">
+                                                        <i class="asterisk icon">*</i>
+                                                    </div> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+
+                                            <div class="form-group">
+                                                <div class="ad-auth-feilds mb-3 rond-input">
+                                                    <label class="col-form-label label-col-1" class="mb-2">
+                                                        Company CIN
+                                                    </label>
+                                                    <input type="text" name="companyCIN" id="companyCIN" value="<%= typeof GeneralSettingData === 'object' && GeneralSettingData ? 
+                                                    (GeneralSettingData.companyCIN ? GeneralSettingData.companyCIN : '') : 
+                                                    ''  %>" placeholder="Please Enter Email Address "
+                                                        class="ad-input remove_space in_field round-border-1 companyCinValid "
+                                                        autocomplete="off" />
+                                                     <div class="ui corner label lable-152 lable-152r" id="demo1">
+                                                        <i class="asterisk icon">*</i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> -->
+
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <div class="ad-auth-feilds mb-3 rond-input">
+                                                    <label class="col-form-label label-col-1" class="mb-2">
+                                                        Address
+                                                    </label>
+                                                    <textarea name="adminAddress" id="adminAddress" autocomplete="off"
+                                                        rows="3" placeholder="Please Enter Address"
+                                                        class="ad-input remove_space in_field round-border-1 remove_back_space"><%= typeof GeneralSettingData === 'object' && GeneralSettingData ? 
+                                                        (GeneralSettingData.adminAddress ? GeneralSettingData.adminAddress : '') : 
+                                                        ''  %></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <div class="ad-auth-feilds mb-3 rond-input">
+                                                    <label class="col-form-label label-col-1" class="mb-2">
+                                                        Address 2
+                                                    </label>
+                                                    <textarea name="adminAddress2" id="adminAddress2" autocomplete="off"
+                                                        rows="3" placeholder="Please Enter Address"
+                                                        class="ad-input remove_space in_field round-border-1 remove_back_space"><%= typeof GeneralSettingData === 'object' && GeneralSettingData ? 
+                                                        (GeneralSettingData.adminAddress2 ? GeneralSettingData.adminAddress2 : '') : 
+                                                        ''  %></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr style="border-color:var(--black); margin-bottom: 1rem; margin-top: 1rem;">
+
+                                        <h6
+                                            style="color:var(--black); font-weight: 600; font-size: 16px; margin-bottom: 10px;">
+                                            Social Link
+                                        </h6>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <div class="ad-auth-feilds mb-3 rond-input">
+                                                    <label class="col-form-label label-col-1"
+                                                        class="mb-2">Facebook</label>
+                                                    <input type="text" name="facebook" id="facebook"
+                                                        value="<%= typeof GeneralSettingData === 'object' && GeneralSettingData ? 
+                                                        (GeneralSettingData.googleSiteKey ? GeneralSettingData.facebook : '') : ''  %>"
+                                                        placeholder="https://www.facebook.com/?locale=hi_IN "
+                                                        class="ad-input remove_space in_field round-border-1 "
+                                                        autocomplete="off" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <div class="ad-auth-feilds mb-3 rond-input">
+                                                    <label class="col-form-label label-col-1"
+                                                        class="mb-2">Instagram</label>
+                                                    <input type="text" name="instagram" id="instagram"
+                                                        value="<%= typeof GeneralSettingData === 'object' && GeneralSettingData ? 
+                                                        (GeneralSettingData.instagram ? GeneralSettingData.instagram : '') : ''  %>"
+                                                        placeholder="https://www.instagram.com/?locale=hi_IN "
+                                                        class="ad-input remove_space in_field round-border-1 "
+                                                        autocomplete="off" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <div class="ad-auth-feilds mb-3 rond-input">
+                                                    <label class="col-form-label label-col-1"
+                                                        class="mb-2">Linkedin</label>
+                                                    <input type="text" name="linkedin" id="linkedin"
+                                                        placeholder="https://www.Linkedin.com/?locale=hi_IN"
+                                                        value="<%= typeof GeneralSettingData === 'object' && GeneralSettingData ? 
+                                                        (GeneralSettingData.linkedin ? GeneralSettingData.linkedin : '') : ''  %>"
+                                                        class="ad-input remove_space in_field round-border-1 "
+                                                        autocomplete="off" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <div class="ad-auth-feilds mb-3 rond-input">
+                                                    <label class="col-form-label label-col-1"
+                                                        class="mb-2">Youtube</label>
+                                                    <input type="text" name="youtube" id="youtube"
+                                                        placeholder="https://www.Youtube.com/"
+                                                        value="<%= typeof GeneralSettingData === 'object' && GeneralSettingData ? 
+                                                        (GeneralSettingData.youtube ? GeneralSettingData.youtube : '') : ''  %>"
+                                                        class="ad-input remove_space in_field round-border-1 "
+                                                        autocomplete="off" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <div class="ad-auth-feilds mb-3 rond-input">
+                                                    <label class="col-form-label label-col-1"
+                                                        class="mb-2">Twitter</label>
+                                                    <input type="text" name="twitter" id="twitter"
+                                                        placeholder="https://www.Twitter.com/"
+                                                        value="<%= typeof GeneralSettingData === 'object' && GeneralSettingData ? 
+                                                        (GeneralSettingData.twitter ? GeneralSettingData.twitter : '') : ''  %>"
+                                                        class="ad-input remove_space in_field round-border-1 "
+                                                        autocomplete="off" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group ml-2  justify-content-end">
+                                    <div class="row">
+                                        <div class="col-12 col-sm-9 col-md-8 col-lg-10 col-xl-10 pt-2">
+                                            <p id="errormsg3"></p>
+                                        </div>
+                                        <div class="col-12 col-sm-3 col-md-4 col-lg-2 col-xl-2 text-end">
+                                            <button type="submit" class="effect-btn btn squer-btn mt-2 text-white"
+                                                style="background: #045363;" id="submitBtn2"><i
+                                                    class="fa fa-spin fa-spinner mr-2"
+                                                    id="btn_spinner_2"></i>Update</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div id="change_password" class="tabcontent" style="display: none;">
+                        <div class="profileHeader">
+                            <h5 class="text-white">Change Password</h5>
+                        </div>
+
+                        <div class="py-2 px-4">
+                            <form method="post" id="changePassFrm" class="separate-form validation-form-container pb-2">
+                                <input type="hidden" name="general_id" id="general_id" value="" />
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="row">
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <div class="ad-auth-feilds mb-3 rond-input">
+                                                    <label class="col-form-label label-col-1" class="mb-2">Old
+                                                        Password</label>
+                                                    <input class="ad-input in_field round-border-1" autocomplete="off"
+                                                        type="password" name="old_password" id="old_password"
+                                                        placeholder="Please Enter Old Password" />
+
+                                                    <span toggle="#old_password"
+                                                        class="fa fa-eye-slash field-icon toggle-login-password pass_eye-152r  pass_eye"
+                                                        onclick="togglePassword(1);"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <div class="ad-auth-feilds mb-3 rond-input">
+                                                    <label class="col-form-label label-col-1" class="mb-2">New
+                                                        Password</label>
+                                                    <input class="ad-input in_field round-border-1" autocomplete="off"
+                                                        type="password" name="new_password" id="new_password"
+                                                        placeholder="Please Enter New Password" />
+                                                    <span toggle="#new_password"
+                                                        class="fa fa-eye-slash field-icon toggle-login-password2 pass_eye-152r  pass_eye"
+                                                        onclick="togglePassword(2);"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <div class="ad-auth-feilds mb-3 rond-input">
+                                                    <label class="col-form-label label-col-1" class="mb-2">Confirm
+                                                        Password</label>
+                                                    <input class="ad-input in_field round-border-1" autocomplete="off"
+                                                        type="password" name="confirm_password" id="confirm_password"
+                                                        placeholder="Please Enter Confirm Password" />
+                                                    <span toggle="#confirm_password"
+                                                        class="fa fa-eye-slash field-icon toggle-login-password3 pass_eye-152r  pass_eye"
+                                                        onclick="togglePassword(3);"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group ml-2  justify-content-end">
+                                    <div class="row">
+                                        <div class="col-12 col-sm-9 col-md-8 col-lg-10 col-xl-10 pt-2">
+                                            <p id="errormsgPass"></p>
+                                        </div>
+                                        <div class="col-12 col-sm-9 col-md-8 col-lg-10 col-xl-10 pt-2">
+                                            <button type="submit" class="effect-btn btn squer-btn mt-2 text-white"
+                                                style="background: rgb(1 82 74);" id="submitBtnPass"><i
+                                                    class="fa fa-spin fa-spinner mr-2" id="btn_spinner_4"></i>
+                                                Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,90 @@
+.from-title {
+    font-weight: 600;
+}
+
+textarea.form-control {
+    min-height: 100px;
+    padding: 20px;
+}
+
+label.error {
+    font-size: 13px;
+    margin: 10px 0 0;
+    font-weight: 600;
+    color: var(--danger);
+    position: absolute;
+    top: 0px;
+    padding: 0px 3px;
+    background: #d95c5c;
+    border-radius: 6px !important;
+    color: #fff !important;
+    width: auto;
+    text-align: center;
+    right: 0;
+    z-index: 11;
+    text-transform: none;
+    padding-left: 11px;
+    padding-right: 11px;
+}
+
+.custom_label+label {
+    font-size: 13px;
+    margin: 10px 0 0;
+    font-weight: 600;
+    color: var(--danger);
+    position: absolute;
+    top: -35px !important;
+    padding: 0px 3px;
+    background: #d95c5c;
+    border-radius: 6px;
+    color: #fff !important;
+    width: auto;
+    text-align: center;
+    right: 0;
+    z-index: 11;
+    text-transform: none;
+    padding-left: 11px;
+    padding-right: 11px;
+}
+
+input.error,
+select.error,
+textarea.error,
+select2.error {
+    border: 1px solid #d95c5c !important;
+    border-left: 5px solid #d95c5c !important;
+    /* background-color: #fffafa !important; */
+}
+
+input.error,
+select.error,
+textarea.error,
+select2.error:focus {
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+label.error::before {
+    position: absolute;
+    content: "";
+    width: 0.6em;
+    height: 0.6em;
+    background-image: none;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transition: background 0.1s linear;
+    margin-left: -0.3em;
+    top: auto;
+    background: #d95c5c;
+    right: 11px;
+    bottom: -4px;
+    left: auto;
+}
+
+.error_astrick {
+    border-color: #d95c5c;
+}
+
+input.error #demo1 {
+    border-color: #d95c5c !important;
+}

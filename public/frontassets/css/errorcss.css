@@ -1,0 +1,112 @@
+.inputP {
+  position: relative;
+}
+
+.btn_spinner {
+  display: none;
+}
+
+label.error {
+  font-size: 13px;
+  /* margin: 10px 0 0; */
+  margin-top: -28px;
+  font-weight: 400;
+  color: #ffffff;
+  position: absolute;
+  top: 0;
+  padding: 0 11px;
+  background: #ff4422;
+  /* background-color: #d95c5c; */
+  border-radius: 6px;
+  width: auto;
+  text-align: center;
+  right: 0;
+  z-index: 11;
+  text-transform: none;
+}
+
+input.error,
+select.error,
+textarea.error,
+select2.error {
+  /* border: 1px solid #d95c5c !important;
+  border-left: 5px solid #d95c5c !important; */
+  border: 1px solid #ff4422 !important;
+  border-left: 5px solid #ff4422 !important;
+  /* background-color: #fffafa !important; */
+}
+
+input.error,
+select.error,
+textarea.error,
+select2.error:focus {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+label.error::before {
+  position: absolute;
+  content: "";
+  width: 0.6em;
+  height: 0.6em;
+  background-image: none;
+  transform: rotate(45deg);
+  transition: background 0.1s linear;
+  margin-left: -0.3em;
+  top: auto;
+  /* background: #d95c5c; */
+  background: #ff4422;
+  right: 11px;
+  bottom: -4px;
+  left: auto;
+}
+
+.error_astrick {
+  /* border-color: #d95c5c; */
+  border-color: #ff4422;
+}
+
+.select2-container--default .select2-selection--single select.error {
+  border: 1px solid #ff4422 !important;
+  border-left: 5px solid #ff4422 !important;
+  /* border: 1px solid #d95c5c !important;
+  border-left: 5px solid #d95c5c !important; */
+  background-color: #fffafa !important;
+}
+
+#prof_pic-error {
+  position: absolute;
+  margin-top: -26px !important;
+}
+
+.date_error {
+  position: relative;
+}
+
+#snackbar-error {
+  display: none;
+  min-width: 250px;
+  margin-left: -150px;
+  background-color: #f44b54;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 9999;
+  left: 50%;
+  bottom: 30px;
+}
+
+.error_pass {
+  color: red;
+}
+
+.alert_error {
+  background-color: rgb(246, 3, 3, 0.7);
+}
+
+.popup-box-alert {
+  left: 50%;
+  transform: translateX(-50%);
+}

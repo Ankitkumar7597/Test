@@ -1,0 +1,176 @@
+<!-- Main Body -->
+<div class="page-wrapper">
+    <!-- Header Start -->
+    <header class="header-wrapper main-header">
+        <div class="header-inner-wrapper">
+            <div class="header-right align-items-center">
+                <div class="header-left">
+                    <div class="header-links">
+                        <a href="javascript:void(0);" id="toggleSideBarIcon" class="toggle-btn">
+                            <span></span>
+                        </a>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <!-- <div class="page-title-wrapper my-0">
+                                <div class="page-title-box">
+                                    <h4 class="page-title breadcumb_cls my-0 fs-5 alwaysWhiteText">
+                                        <%= title %>
+                                    </h4>
+                                </div>
+                            </div> -->
+                            <div class="logo-wrapper">
+                                <div class="mb-0 text-center">
+                                    <a href="<%=admin%>/dashboard">
+                                        <img class="logoImgChange " src="/adminassets/images/profile.png" alt="Logo">
+                                    </a>
+                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-controls">
+                    <!--   <div>
+                        <img src="/images/Vector.png" style="width: 26px;">
+                    </div> -->
+                    <div class="theme-switch boxShadowNew">
+                        <span class="page-title page-title-dark  my-0 fs-5 text-center alwaysWhiteText">
+                            <h4>Dark</h4>
+                        </span>
+                        <input type="checkbox" class="checkbox" id="theme-toggle" />
+                        <label for="theme-toggle" class="label mb-0">
+                            <svg class="moon" width="24" height="24" stroke-width="1.5" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M3 11.5066C3 16.7497 7.25034 21 12.4934 21C16.2209 21 19.4466 18.8518 21 15.7259C12.4934 15.7259 8.27411 11.5066 8.27411 3C5.14821 4.55344 3 7.77915 3 11.5066Z"
+                                    stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            <svg class="sun" width="24" height="24" stroke-width="1.5" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18Z"
+                                    stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M22 12L23 12" stroke="currentColor" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M12 2V1" stroke="currentColor" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M12 23V22" stroke="currentColor" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M20 20L19 19" stroke="currentColor" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M20 4L19 5" stroke="currentColor" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M4 20L5 19" stroke="currentColor" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M4 4L5 5" stroke="currentColor" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M1 12L2 12" stroke="currentColor" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            <div class="ball"></div>
+                        </label>
+                        <span class="page-title page-title-light my-0 fs-5 text-center alwaysWhiteText">
+                            <h4>Light</h4>
+                        </span>
+                    </div>
+                    <div class="user-info-wrapper header-links ">
+                        <a href="javascript:void(0);" class="user-info boxShadowNew">
+                            <img src="/adminassets/images/user.jpg" alt="" class="user-img">
+                        </a>
+                        <div class="user-info-box">
+                            <div class="drop-down-header">
+                                <h4>Hello Admin</h4>
+                            </div>
+                            <ul>
+                                <li>
+                                    <a href="<%= admin %>/profile">
+                                        <i class="far fa-edit"></i>Admin profile
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#logoutModal" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                                        <i class="fas fa-sign-out-alt"></i> logout
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </header>
+    <!-- Sidebar Start -->
+    <aside class="sidebar-wrapper">
+        <div class="position-sticky top-0 z-3 ">
+            <div class="logo-wrapper">
+                <!-- <div class="mb-0 text-center">
+                    <a href="<%=admin%>/dashboard">
+                        <img class="logoImgChange " src="/adminassets/images/profile.png" alt="Logo">
+                    </a>
+
+                </div> -->
+                <h5 class="mb-2  text-center text-break">Continental</h5>
+            </div>
+            <div class="emp-details text-center">
+                <!-- <h4 style="color:white; margin-top: 10px; padding-bottom:9px;">Company Name</h4> -->
+            </div>
+        </div>
+        <div class="side-menu-wrap" style="padding-top: 20px;">
+            <ul class="main-menu">
+                <li class="mb-1">
+                    <a href="<%= admin %>/dashboard"
+                        class="<%= (typeof activeMenu === 'string' && activeMenu === 'dashboard') ? 'active-header' : '' %>">
+                        <span class="icon-menu feather-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="20" height="20"
+                                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                            </svg>
+                        </span>
+                        <span class="menu-text">
+                            Dashboard
+                        </span>
+                    </a>
+                </li>
+                <li class="mb-1">
+                    <a href="javascript:void(0);"
+                        class="<%= (typeof masterMenu=='string' && masterMenu=='mainManagement') ? 'active-header' : '' %>">
+                        <span class="icon-menu feather-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" width="20" height="20">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
+                            </svg>
+                        </span>
+                        <span class="menu-text">
+                            Main
+                        </span>
+                    </a>
+                    <ul class="sub-menu" <% if (typeof masterMenu=='string' && masterMenu=='mainManagement' ) { %>
+                        style="display: block;" <% } %> >
+                            <li>
+                                <a href="<%= admin %>/sub-h-1">
+                                    <span class="icon-dash">
+                                    </span>
+                                    <span class="menu-text">
+                                        Sub H1
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="<%= admin %>/sub-h-2">
+                                    <span class="icon-dash">
+                                    </span>
+                                    <span class="menu-text">
+                                        Sub H2
+                                    </span>
+                                </a>
+                            </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </aside>

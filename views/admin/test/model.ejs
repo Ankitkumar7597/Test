@@ -1,0 +1,170 @@
+<script type="text/javascript" src="/adminassets/js/tinymce/tinymce.min.js"></script>
+<script type="text/javascript">
+    tinymce.init({
+        selector: "textarea.textarea1",  // Directly target the textarea
+        theme: "modern",
+        branding: false,
+        height: 200,  // Optional: Set editor height
+        plugins: [
+            "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+            "searchreplace wordcount visualblocks visualchars code fullscreen",
+            "insertdatetime media nonbreaking save table contextmenu directionality",
+            "emoticons template paste textcolor colorpicker textpattern code"  // Include 'code' plugin for HTML editing
+        ],
+        toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+        toolbar2: "print preview media | forecolor backcolor emoticons",
+        table_default_attributes: { 'class': 'table' },
+        table_default_styles: { 'border-collapse': 'collapse', 'width': '100%' },
+        table_responsive_width: true,
+        paste_data_images: true,
+        images_upload_url: admin + '/tinymce-upload-image', // Correct upload URL
+        images_upload_handler: function (blobInfo, success, failure) {
+            var xhr, formData;
+            xhr = new XMLHttpRequest();
+            xhr.withCredentials = false;
+            xhr.open('POST', admin + '/tinymce-upload-image');
+            xhr.onload = function () {
+                var json;
+                if (xhr.status != 200) {
+                    failure('HTTP Error: ' + xhr.status);
+                    return;
+                }
+                json = JSON.parse(xhr.responseText);
+                if (!json || typeof json.location != 'string') {
+                    failure('Invalid JSON: ' + xhr.responseText);
+                    return;
+                }
+                success(json.location);
+            };
+            formData = new FormData();
+            formData.append('file', blobInfo.blob(), blobInfo.filename());
+            xhr.send(formData);
+        }
+    });
+    // Prevent Bootstrap dialog from blocking focusin
+    document.addEventListener('focusin', (e) => {
+        if (e.target.closest(".tox-tinymce, .tox-tinymce-aux, .moxman-window, .tam-assetmanager-root") !== null) {
+            e.stopImmediatePropagation();
+        }
+    });
+</script>
+<div class="card-body p-0">
+    <form method="post" id="testFrm" class="separate-form validation-form-container p-0 pb-2"
+        enctype="multipart/form-data">
+        <input type="hidden" name="add_form_id" id="add_form_id"
+            value="<%= (typeof data !== 'undefined' && typeof data.id !== 'undefined') ? data.id : '' %>">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 px-4">
+            <div class="row">
+                <div class="col-xl-6 col-lg-4 col-md-4 col-sm-12 col-12">
+                    <div class="form-group rond-input mb-3">
+                        <label class="col-form-label label-col-1 ">Name <span style="color: red;">*</span>
+                        </label>
+                        <input class="form-control in_field remove_space remove_back_space round-border-1" type="text"
+                            placeholder="Enter Name " autocomplete="off" name="name" id="name"
+                            value="<%= (typeof data !== 'undefined' && typeof data.name !== 'undefined') ? data.name : '' %>">
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-4 col-md-4 col-sm-12 col-12">
+                    <div class="form-group rond-input mb-3">
+                        <label class="col-form-label label-col-1 ">Mobile Number <span style="color: red;">*</span>
+                        </label>
+                        <input class="form-control in_field remove_space round-border-1 mobile-valid" type="text"
+                            placeholder="Enter Client Name" autocomplete="off" name="mobile_number" id="mobile_number"
+                            value="<%= (typeof data !== 'undefined' && typeof data.mobile_number !== 'undefined') ? data.mobile_number : '' %>">
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="form-group rond-input mb-3">
+                        <label class="col-form-label label-col-1 ">Address <span style="color: red;">*</span>
+                        </label>
+                        <textarea class="form-control remove_space in_field round-border-1 remove_back_space"
+                            placeholder="Enter Office Address" name="address"
+                            id="address"><%= (typeof data !== 'undefined' && typeof data.address !== 'undefined') ? data.address : '' %></textarea>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="form-group rond-input mb-3">
+                        <label class="col-form-label label-col-1 ">Office Address <span style="color: red;">*</span>
+                        </label>
+                        <textarea class="form-control remove_space in_field round-border-1 remove_back_space"
+                            placeholder="Enter Office Address" name="office_address"
+                            id="office_address"><%= (typeof data !== 'undefined' && typeof data.office_address !== 'undefined') ? data.office_address : '' %></textarea>
+                    </div>
+                </div>
+
+                <%['Image'].map((item,index)=>{ %>
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+                        <div class="form-group m-b-30">
+                            <label for="<%='file_saved_name_'+(index+1)%>" class="col-form-label label-col-1">
+                                <%= item%>(.jpeg, .jpg, .png, .webp) <span style="color: red;">*</span>
+                            </label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="fileUpload btn btn-secondary upload-btn ">
+                                        <span class="upl" id="upload">Upload Img</span>
+                                        <input type="file" id="<%='pro_pic_'+(index+1)%>" class="upload up"
+                                            onchange="imageUpload(this,this.id,'uploads/blog/',<%='file_saved_name_'+(index+1)%>,<%='pro_pic_view_'+(index+1)%>,<%='pro_pic_remove_'+(index+1)%>,1)" />
+                                        <input type="hidden" name="<%='file_saved_name_'+(index+1)%>"
+                                            id="<%='file_saved_name_'+(index+1)%>" value="<%= data.image %>" />
+                                    </div>
+                                </div>
+                                <input type="text" placeholder="No File chosen"
+                                    class="form-control empimage in_field img_error custom_label"
+                                    name="<%='file_name_'+(index+1)%>" id="<%='file_name_'+(index+1)%>"
+                                    value="<%= data.image %>" readonly />
+                                <!-- <div class="ui corner label" style="top: 0">
+                                    <i class="asterisk icon"></i>
+                                </div> -->
+                            </div>
+                            <div class="progress progress_pro">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-12" style="position: relative;">
+                        <span class="<%='doc_append_'+(index+1)%>">
+                            <img id="<%='pro_pic_view_'+(index+1)%>" vall
+                                src="<% if (data.image !== 'undefined' && data.image != ''  && data.image != null) { %>/uploads/blog/<%= data.image %><% } %>"
+                                class="<%='pro_pic_view_'+(index+1)%>" />
+                        </span>
+
+                        <input type="button" id="<%='pro_pic_remove_'+(index+1)%>" value="x"
+                            class="rmv <%='pro_pic_remove_'+(index+1)%>"
+                            onclick="removeImage(this.id,<%='pro_pic_'+(index+1)%>,<%='pro_pic_view_'+(index+1)%>,<%='file_saved_name_'+(index+1)%>,'uploads/blog/',`<%='doc_append_'+(index+1)%>`,`<%='file_name_'+(index+1)%>`,1,'<%= data.image ? 'edit_form' : 'add_form' %>')"
+                            <% if(data.image) { %>
+                        style="display:block; position: absolute; top: -2px; left: auto; right: 14px;"
+                        <% } else { %>
+                            style="display:none; position: absolute; top: -2px; left: auto; right: 14px;"
+                            <% } %>
+
+                                />
+                    </div>
+                    <% }) %>
+
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="form-group rond-input mb-3">
+                                <label class="col-form-label label-col-1 ">Details <span style="color: red;">*</span>
+                                </label>
+                                <textarea
+                                    class="form-control remove_space in_field round-border-1 remove_back_space textarea1"
+                                    placeholder="Enter details" name="details"
+                                    id="details"><%= (typeof data !== 'undefined' && typeof data.details !== 'undefined') ? data.office_address : '' %></textarea>
+                            </div>
+                        </div>
+            </div>
+            <div class="form-group ml-2  justify-content-end">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10 pt-2">
+                        <p class="errorMessage" id="errorMessage"></p>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 text-end">
+                        <button type="submit" class="effect-btn btn squer-btn mt-2 text-white submitBtn" id="submitBtn">
+                            <i class="fa fa-spin fa-spinner mr-2 btn_spinner" id="btn_spinner"></i>Submit </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="/adminassets/js/validation.js"></script>
