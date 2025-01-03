@@ -107,18 +107,3 @@ app.listen(port, () => {
     console.log(`Running in ${global.node_env || 'unknown'} mode`);
 });
 
-
-//added by aalekh 
-
-
-//hello
-
-
-// added by ankit
-
-// jk
-
-//new code changes
-
-
-//1
